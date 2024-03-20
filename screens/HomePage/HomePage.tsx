@@ -1,7 +1,9 @@
+import { Keyboard } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { Button, TextInput, Spacer } from "@/components";
 import * as S from "./HomePage.styles";
-import Spacer from "@/components/Spacer";
-import { Button, TextInput } from "@/components";
+import { Link } from "expo-router";
 
 function HomePage() {
   return (
@@ -21,7 +23,10 @@ function HomePage() {
         <Spacer size={16} />
         <TextInput label="Correo" type="email" />
         <Spacer size={35} />
-        <Button title="Descubrir créditos" />
+        <Link href="/modal" asChild>
+          <Button title="Descubrir créditos" />
+        </Link>
+        <S.KeyboardDismiss onPress={Keyboard.dismiss} />
       </S.Container>
     </SafeAreaView>
   );

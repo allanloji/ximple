@@ -18,3 +18,8 @@ export const Subtitle = styled.Text`
   font-weight: regular;
   color: #7a7a7a;
 `;
+
+export const KeyboardDismiss = styled.Pressable`
+  height: 100%;
+  width: 100%;
+`;
