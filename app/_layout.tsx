@@ -51,7 +51,6 @@ function RootLayoutNav() {
         }}
         initialRouteName="home"
       >
-        <Stack.Screen name="home" />
         <Stack.Screen
           name="modal"
           options={{ presentation: "transparentModal", animation: "fade" }}

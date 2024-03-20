@@ -13,6 +13,6 @@ export const Container = styled.Pressable`
 
 export const Text = styled.Text`
   font-size: 16px;
-  font-weight: semi-bold;
+  font-weight: semibold;
   color: #fff;
 `;

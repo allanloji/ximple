@@ -14,3 +14,9 @@ export const TextInput = styled.TextInput`
   padding-horizontal: 16px;
   font-size: 14px;
 `;
+
+export const ErrorMessage = styled.Text`
+  font-size: 12px;
+  font-weight: regular;
+  color: #f44336;
+`;

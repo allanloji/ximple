@@ -11,15 +11,16 @@ type TextInputTypes = "text" | "email";
 
 interface TextInputProps extends Omit<RNTextInputProps, "onChange"> {
   type?: TextInputTypes;
-  disabled?: boolean;
+
   label?: string;
   name?: string;
   onChange?: (value?: string) => void;
+  error?: string;
 }
 
 function TextInput({
   type = "text",
-  disabled = false,
+  error,
   label,
   onChange,
   value,
@@ -37,6 +38,8 @@ function TextInput({
         value={value}
         keyboardType={keyboardTypes[type] as RNTextInputProps["keyboardType"]}
       />
+      <Spacer size={5} />
+      {!!error ? <S.ErrorMessage>{error}</S.ErrorMessage> : null}
     </>
   );
 }
