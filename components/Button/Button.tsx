@@ -4,15 +4,17 @@ import * as S from "./Button.styles";
 
 interface ButtonProps extends RNButtonProps {
   title: string;
+  isLoading?: boolean;
 }
 
-function Button({ title, ...props }: ButtonProps) {
+function Button({ title, isLoading = false, disabled, ...props }: ButtonProps) {
   return (
     <S.Button
       style={({ pressed }) => [{ transform: [{ scale: pressed ? 0.95 : 1 }] }]}
+      disabled={disabled || isLoading}
       {...props}
     >
-      <S.Title>{title}</S.Title>
+      <S.Title>{isLoading ? "Cargando..." : title}</S.Title>
     </S.Button>
   );
 }

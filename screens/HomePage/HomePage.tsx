@@ -1,19 +1,46 @@
 import { Keyboard } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Controller, useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { router } from "expo-router";
 
 import { Button, TextInput, Spacer } from "@/components";
 import * as S from "./HomePage.styles";
-import { Link } from "expo-router";
-import { Controller, useForm } from "react-hook-form";
+import { CREDITS_LIST, queryKeys } from "@/api/queryKeys";
+
+type FormData = {
+  name: string;
+  email: string;
+};
 
 function HomePage() {
+  const queryClient = useQueryClient();
   const {
     control,
     formState: { isValid },
-  } = useForm({ defaultValues: { name: "", email: "" }, mode: "onChange" });
+  } = useForm<FormData>({
+    defaultValues: { name: "", email: "" },
+    mode: "onChange",
+  });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const { mutate: getCredits, isPending } = useMutation({
+    mutationFn: () =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(CREDITS_LIST);
+        }, 1000);
+      }),
+    onSuccess: (data) => {
+      queryClient.setQueryData(queryKeys.credits.all.queryKey, data);
+      router.navigate("modal");
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+
+  const onSubmit = () => {
+    getCredits();
   };
 
   return (
@@ -78,9 +105,14 @@ function HomePage() {
           name="email"
         />
         <Spacer size={35} />
-        <Link href="/modal" asChild>
-          <Button title="Descubrir créditos" disabled={!isValid} />
-        </Link>
+
+        <Button
+          title="Descubrir créditos"
+          disabled={!isValid}
+          isLoading={isPending}
+          onPress={onSubmit}
+        />
+
         <S.KeyboardDismiss onPress={Keyboard.dismiss} />
       </S.Container>
     </SafeAreaView>

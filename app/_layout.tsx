@@ -1,5 +1,6 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -42,20 +43,24 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
+const queryClient = new QueryClient();
+
 function RootLayoutNav() {
   return (
     <ThemeProvider value={DefaultTheme}>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName="home"
-      >
-        <Stack.Screen
-          name="modal"
-          options={{ presentation: "transparentModal", animation: "fade" }}
-        />
-      </Stack>
+      <QueryClientProvider client={queryClient}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName="home"
+        >
+          <Stack.Screen
+            name="modal"
+            options={{ presentation: "transparentModal", animation: "fade" }}
+          />
+        </Stack>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
