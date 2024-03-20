@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as S from "./HomePage.styles";
 import Spacer from "@/components/Spacer";
-import { TextInput } from "@/components";
+import { Button, TextInput } from "@/components";
 
 function HomePage() {
   return (
@@ -21,6 +21,7 @@ function HomePage() {
         <Spacer size={16} />
         <TextInput label="Correo" type="email" />
         <Spacer size={35} />
+        <Button title="Descubrir créditos" />
       </S.Container>
     </SafeAreaView>
   );
