@@ -1,16 +1,35 @@
-import { Link } from "expo-router";
+import { useState } from "react";
+import { View } from "react-native";
+import { router } from "expo-router";
+import { useQuery } from "@tanstack/react-query";
 
 import { Button, CreditOption, Spacer } from "@/components";
+import { Credit, queryKeys } from "@/api/queryKeys";
+import { useCreditContext } from "@/contexts/creditContext";
+
 import * as S from "./CreditModal.styles";
-import { useQuery } from "@tanstack/react-query";
-import { queryKeys } from "@/api/queryKeys";
-import { View } from "react-native";
 
 function CreditModal() {
+  const { update: updateCreditData } = useCreditContext();
   const { data: credits } = useQuery({
     ...queryKeys.credits.all,
-    staleTime: 60 * 1000,
+    // Keep the data in cache for 5 minutes
+    staleTime: 60 * 1000 * 5,
   });
+
+  const [selectedCredit, setSelectedCredit] = useState<Credit>();
+
+  const onCreditPressed = (credit: Credit) => {
+    setSelectedCredit(credit);
+  };
+
+  const onContinuePressed = () => {
+    updateCreditData({
+      credit: selectedCredit,
+    });
+    router.navigate("/credit-acceptance");
+  };
+
   return (
     <S.Container>
       <S.ModalContainer>
@@ -20,14 +39,21 @@ function CreditModal() {
         <Spacer size={37} />
         {credits?.map((credit, index) => (
           <View key={credit.id}>
-            <CreditOption label={credit.label} value={credit.value} />
+            <CreditOption
+              label={credit.label}
+              value={credit.value}
+              selected={selectedCredit?.id === credit.id}
+              onPress={() => onCreditPressed(credit)}
+            />
             <Spacer size={index === credits.length - 1 ? 37 : 12} />
           </View>
         ))}
 
-        <Link href="/credit-acceptance" asChild>
-          <Button title="Seleccionar crédito" />
-        </Link>
+        <Button
+          title="Seleccionar crédito"
+          disabled={typeof selectedCredit === "undefined"}
+          onPress={onContinuePressed}
+        />
       </S.ModalContainer>
     </S.Container>
   );

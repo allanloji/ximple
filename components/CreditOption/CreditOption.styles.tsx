@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
-export const Container = styled.Pressable`
-  background-color: #8ebcf7;
+export const Container = styled.Pressable<{ selected: boolean }>`
+  background-color: ${({ selected }) => (selected ? "#1676f3" : "#8ebcf7")};
   width: 100%;
   height: 43px;
   border-radius: 4px;

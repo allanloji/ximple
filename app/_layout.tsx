@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { CreditProvider } from "@/contexts/creditContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -49,17 +50,19 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={DefaultTheme}>
       <QueryClientProvider client={queryClient}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-          initialRouteName="home"
-        >
-          <Stack.Screen
-            name="modal"
-            options={{ presentation: "transparentModal", animation: "fade" }}
-          />
-        </Stack>
+        <CreditProvider>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+            initialRouteName="home"
+          >
+            <Stack.Screen
+              name="modal"
+              options={{ presentation: "transparentModal", animation: "fade" }}
+            />
+          </Stack>
+        </CreditProvider>
       </QueryClientProvider>
     </ThemeProvider>
   );

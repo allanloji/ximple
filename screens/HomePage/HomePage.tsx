@@ -7,6 +7,7 @@ import { router } from "expo-router";
 import { Button, TextInput, Spacer } from "@/components";
 import * as S from "./HomePage.styles";
 import { CREDITS_LIST, queryKeys } from "@/api/queryKeys";
+import { useCreditContext } from "@/contexts/creditContext";
 
 type FormData = {
   name: string;
@@ -15,6 +16,7 @@ type FormData = {
 
 function HomePage() {
   const queryClient = useQueryClient();
+  const { update: updateCreditData } = useCreditContext();
   const {
     control,
     formState: { isValid },
@@ -40,6 +42,11 @@ function HomePage() {
   });
 
   const onSubmit = () => {
+    Keyboard.dismiss();
+    updateCreditData({
+      name: "name",
+      email: "email",
+    });
     getCredits();
   };
 

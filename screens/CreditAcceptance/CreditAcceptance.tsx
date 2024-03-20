@@ -2,8 +2,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import * as S from "./CreditAcceptance.styles";
 import { Button, CreditOption, Spacer } from "@/components";
+import { useCreditContext } from "@/contexts/creditContext";
 
 function CreditAcceptance() {
+  const { data: creditData } = useCreditContext();
+
   return (
     <SafeAreaView>
       <S.Container>
@@ -16,7 +19,10 @@ function CreditAcceptance() {
         <Spacer size={70} />
         <S.Subtitle>Crédito seleccionado:</S.Subtitle>
         <Spacer size={10} />
-        <CreditOption label="Crédito 1" value="$500" />
+        <CreditOption
+          label={creditData.credit?.label || "No seleccionado"}
+          value={creditData.credit?.value || "-"}
+        />
         <Spacer size={55} />
         <Button title="Contratar" />
       </S.Container>

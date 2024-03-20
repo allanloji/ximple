@@ -19,7 +19,7 @@ export const CREDITS_LIST = [
   },
 ];
 
-type Credit = {
+export type Credit = {
   id: string;
   label: string;
   value: string;
