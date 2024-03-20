@@ -27,6 +27,7 @@ function CreditModal() {
     updateCreditData({
       credit: selectedCredit,
     });
+    router.back();
     router.navigate("/credit-acceptance");
   };
 

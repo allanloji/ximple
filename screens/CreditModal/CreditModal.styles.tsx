@@ -4,7 +4,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: rgba(0, 0, 0, 0.2);
   padding-horizontal: 24px;
-  padding-top: 171px;
+  padding-top: 20%;
 `;
 
 export const ModalContainer = styled.View`
