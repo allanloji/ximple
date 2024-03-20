@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { FlatList } from "react-native";
 import { router } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 
@@ -36,19 +36,26 @@ function CreditModal() {
         <S.Title>¡Felicidades!</S.Title>
         <Spacer size={11} />
         <S.Subtitle>Encontramos estos créditos perfectos para ti:</S.Subtitle>
+        <Spacer size={20} />
+        <S.ListContainer>
+          <FlatList
+            data={credits}
+            renderItem={({ item: credit }) => (
+              <CreditOption
+                label={credit.label}
+                value={credit.value}
+                selected={selectedCredit?.id === credit.id}
+                onPress={() => onCreditPressed(credit)}
+              />
+            )}
+            ItemSeparatorComponent={() => <Spacer size={12} />}
+            keyExtractor={(credit) => credit.id}
+            ListEmptyComponent={() => (
+              <S.Subtitle>No hay créditos disponibles</S.Subtitle>
+            )}
+          />
+        </S.ListContainer>
         <Spacer size={37} />
-        {credits?.map((credit, index) => (
-          <View key={credit.id}>
-            <CreditOption
-              label={credit.label}
-              value={credit.value}
-              selected={selectedCredit?.id === credit.id}
-              onPress={() => onCreditPressed(credit)}
-            />
-            <Spacer size={index === credits.length - 1 ? 37 : 12} />
-          </View>
-        ))}
-
         <Button
           title="Seleccionar crédito"
           disabled={typeof selectedCredit === "undefined"}

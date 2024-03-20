@@ -8,7 +8,8 @@ export const Container = styled.Pressable<{ selected: boolean }>`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-horizontal: 8px;
+  padding-left: 8px;
+  padding-right: 12px;
 `;
 
 export const Text = styled.Text`

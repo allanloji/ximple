@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const Container = styled.KeyboardAvoidingView`
-  padding-horizontal: 16px;
+  padding-horizontal: 15px;
 `;
 
 export const Title = styled.Text`

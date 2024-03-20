@@ -11,7 +11,6 @@ type TextInputTypes = "text" | "email";
 
 interface TextInputProps extends Omit<RNTextInputProps, "onChange"> {
   type?: TextInputTypes;
-
   label?: string;
   name?: string;
   onChange?: (value?: string) => void;
