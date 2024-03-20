@@ -1,6 +1,7 @@
-import { Button, Spacer } from "@/components";
+import { Link } from "expo-router";
+
+import { Button, CreditOption, Spacer } from "@/components";
 import * as S from "./CreditModal.styles";
-import { CreditOption } from "./components";
 
 function CreditModal() {
   return (
@@ -16,7 +17,9 @@ function CreditModal() {
         <Spacer size={12} />
         <CreditOption label="Crédito 3" value="$2,000" />
         <Spacer size={37} />
-        <Button title="Seleccionar crédito" />
+        <Link href="/credit-acceptance" asChild>
+          <Button title="Seleccionar crédito" />
+        </Link>
       </S.ModalContainer>
     </S.Container>
   );

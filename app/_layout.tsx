@@ -54,7 +54,7 @@ function RootLayoutNav() {
         <Stack.Screen name="home" />
         <Stack.Screen
           name="modal"
-          options={{ presentation: "transparentModal" }}
+          options={{ presentation: "transparentModal", animation: "fade" }}
         />
       </Stack>
     </ThemeProvider>
