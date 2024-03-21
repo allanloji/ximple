@@ -13,5 +13,5 @@ export const Title = styled.Text`
   color: #fff;
   font-size: 16px;
   font-weight: semibold;
-  font-family: "PlusJakartaSans";
+  font-family: "PlusJakartaSans-SemiBold";
 `;

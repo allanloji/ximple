@@ -1,4 +1,4 @@
-import { Keyboard, Alert } from "react-native";
+import { Keyboard, Alert, Platform } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { router } from "expo-router";
@@ -50,7 +50,7 @@ function HomePage() {
   };
 
   return (
-    <S.Container>
+    <S.Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <Spacer size={72} />
       <Title>Descubre tu crédito</Title>
       <Spacer size={11} />
@@ -107,6 +107,7 @@ function HomePage() {
             onChange={onChange}
             error={error?.message}
             name="email"
+            autoCapitalize="none"
           />
         )}
         name="email"
@@ -119,7 +120,7 @@ function HomePage() {
         onPress={onSubmit}
       />
 
-      <S.KeyboardDismiss onPress={Keyboard.dismiss} />
+      {/* <S.KeyboardDismiss onPress={Keyboard.dismiss} /> */}
     </S.Container>
   );
 }
