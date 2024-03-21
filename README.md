@@ -48,7 +48,10 @@ To run the unit tests, run the following command on the main folder
 ```
 
 ### E2E tests
-To run unit tests, install [maestro](https://maestro.mobile.dev/getting-started/installing-maestro) and run on the main folder
+To run unit tests:
+1. Start the app on a emulator or connected devices
+2. install [maestro](https://maestro.mobile.dev/getting-started/installing-maestro)
+3. Run on the main folder:
 ```bash
     maestro test e2e
 ```

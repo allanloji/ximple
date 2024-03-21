@@ -16,4 +16,5 @@ export const Text = styled.Text`
   font-size: 16px;
   font-weight: semibold;
   color: #fff;
+  font-family: "PlusJakartaSans";
 `;

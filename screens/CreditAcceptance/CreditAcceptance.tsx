@@ -1,5 +1,5 @@
 import * as S from "./CreditAcceptance.styles";
-import { Button, CreditOption, Spacer } from "@/components";
+import { Button, CreditOption, Spacer, Subtitle, Title } from "@/components";
 import { useCreditContext } from "@/contexts/creditContext";
 
 function CreditAcceptance() {
@@ -8,11 +8,11 @@ function CreditAcceptance() {
   return (
     <S.Container>
       <Spacer size={72} />
-      <S.Title>Acepta tu crédito</S.Title>
+      <Title>Acepta tu crédito</Title>
       <Spacer size={11} />
-      <S.Subtitle>Confirma que has seleccionado el crédito deseado.</S.Subtitle>
+      <Subtitle>Confirma que has seleccionado el crédito deseado.</Subtitle>
       <Spacer size={70} />
-      <S.Subtitle>Crédito seleccionado:</S.Subtitle>
+      <Subtitle>Crédito seleccionado:</Subtitle>
       <Spacer size={10} />
       <CreditOption
         label={creditData.credit?.label || "No seleccionado"}

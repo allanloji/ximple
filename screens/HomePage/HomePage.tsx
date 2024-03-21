@@ -3,7 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { router } from "expo-router";
 
-import { Button, TextInput, Spacer } from "@/components";
+import { Button, TextInput, Spacer, Title, Subtitle } from "@/components";
 import * as S from "./HomePage.styles";
 import { CREDITS_LIST, queryKeys } from "@/api/queryKeys";
 import { useCreditContext } from "@/contexts/creditContext";
@@ -52,13 +52,13 @@ function HomePage() {
   return (
     <S.Container>
       <Spacer size={72} />
-      <S.Title>Descubre tu crédito</S.Title>
+      <Title>Descubre tu crédito</Title>
       <Spacer size={11} />
       <S.SubtitleContainer>
-        <S.Subtitle>
+        <Subtitle>
           Llena el siguiente formulario para conocer los créditos que tenemos
           disponibles para ti.
-        </S.Subtitle>
+        </Subtitle>
       </S.SubtitleContainer>
       <Spacer size={30} />
       <Controller

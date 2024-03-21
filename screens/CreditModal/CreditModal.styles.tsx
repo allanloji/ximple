@@ -16,17 +16,6 @@ export const ModalContainer = styled.View`
   padding-vertical: 18px;
 `;
 
-export const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-export const Subtitle = styled.Text`
-  font-size: 12px;
-  font-weight: regular;
-  color: #7a7a7a;
-`;
-
 export const ListContainer = styled.View`
   height: 153px;
 `;

@@ -3,7 +3,7 @@ import { FlatList } from "react-native";
 import { router } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 
-import { Button, CreditOption, Spacer } from "@/components";
+import { Button, CreditOption, Spacer, Subtitle, Title } from "@/components";
 import { Credit, queryKeys } from "@/api/queryKeys";
 import { useCreditContext } from "@/contexts/creditContext";
 
@@ -34,9 +34,9 @@ function CreditModal() {
   return (
     <S.Container>
       <S.ModalContainer>
-        <S.Title>¡Felicidades!</S.Title>
+        <Title>¡Felicidades!</Title>
         <Spacer size={11} />
-        <S.Subtitle>Encontramos estos créditos perfectos para ti:</S.Subtitle>
+        <Subtitle>Encontramos estos créditos perfectos para ti:</Subtitle>
         <Spacer size={20} />
         <S.ListContainer>
           <FlatList
@@ -52,7 +52,7 @@ function CreditModal() {
             ItemSeparatorComponent={() => <Spacer size={12} />}
             keyExtractor={(credit) => credit.id}
             ListEmptyComponent={() => (
-              <S.Subtitle>No hay créditos disponibles</S.Subtitle>
+              <Subtitle>No hay créditos disponibles</Subtitle>
             )}
           />
         </S.ListContainer>
