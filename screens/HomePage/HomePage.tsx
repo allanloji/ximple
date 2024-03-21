@@ -84,6 +84,7 @@ function HomePage() {
             value={value}
             onChange={onChange}
             error={error?.message}
+            name="name"
           />
         )}
         name="name"
@@ -105,6 +106,7 @@ function HomePage() {
             value={value}
             onChange={onChange}
             error={error?.message}
+            name="email"
           />
         )}
         name="email"

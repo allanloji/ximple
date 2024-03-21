@@ -18,11 +18,12 @@ interface TextInputProps extends Omit<RNTextInputProps, "onChange"> {
 }
 
 function TextInput({
-  type = "text",
+  name,
   error,
   label,
   onChange,
   value,
+  type = "text",
 }: TextInputProps) {
   return (
     <>
@@ -33,6 +34,7 @@ function TextInput({
         </>
       ) : null}
       <S.TextInput
+        testID={`${name}-input`}
         onChangeText={onChange}
         value={value}
         keyboardType={keyboardTypes[type] as RNTextInputProps["keyboardType"]}

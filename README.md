@@ -46,3 +46,9 @@ To run the unit tests, run the following command on the main folder
 ```bash
   yarn test
 ```
+
+### E2E tests
+To run unit tests, install [maestro](https://maestro.mobile.dev/getting-started/installing-maestro) and run on the main folder
+```bash
+    maestro test e2e
+```

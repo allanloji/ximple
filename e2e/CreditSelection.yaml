@@ -1,0 +1,13 @@
+appId: com.example.ximple
+---
+- tapOn:
+    id: name-input
+- inputRandomPersonName
+- tapOn:
+    id: email-input
+- inputRandomEmail
+- tapOn: "Descubrir créditos"
+- tapOn: "Crédito 1"
+- tapOn: "Seleccionar crédito"
+- assertVisible: "Crédito 1"
+- assertVisible: "Contratar"
