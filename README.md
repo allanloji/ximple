@@ -55,3 +55,9 @@ To run unit tests:
 ```bash
     maestro test e2e
 ```
+### Future Improvements
+Some features that can be worked on the future:
+- Making a real API request for the credits
+- Sending to the API the user data
+- Add different e2e flows and testing with BE
+- Add a way to login and see your previous submissions

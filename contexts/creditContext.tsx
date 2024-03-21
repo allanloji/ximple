@@ -24,7 +24,10 @@ const initialState: CreditData = {
   email: undefined,
   credit: undefined,
 };
-
+/**
+ * This context is used to store the data that the user inputs in the credit process
+ *
+ */
 function CreditProvider({ children }: CreditProviderProps) {
   const [data, setData] = useState<CreditData>(initialState);
 
